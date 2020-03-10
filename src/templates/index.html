@@ -1,0 +1,93 @@
+
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 14px;
+        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        height:100% ;
+    }
+    .site-heading{
+        color: #d9d9d9;
+    }
+    
+    .head_text {
+        color: white;
+    }
+    
+    .card {
+        box-shadow: 0px 0px 0px #1b1e23;
+        background: rgba(200,200,200,0.1);
+        border: 1px solid white;
+        
+    }
+    .card-text{
+            color: #d9d9d9;
+        }
+    .box {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div class="cont">
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class=" col-sm mx-auto">
+                <div class="site-heading">
+                    <h1 id="site-heading" class="text-center site-heading display-4 my-1 mt-3"> Welcome to Click_galaxy</h1>
+                    <p class="text-center mx-auto">A redefined Photography Blog
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="jumbotron">
+    
+  <h2 class="text-center" id="site-heading">Get Ready To Immerse in this Galaxy</h2>
+  <p class="text-center lead">Are you a photography enthusiast?
+  If yes, then you are at a right place. </p>
+  
+  <p class="text-center">Explore to Learn More</p>
+  <div class="text-center">
+  <a class="btn btn-outline-light btn-lg text-center" href="{% url 'about_page' %}" role="button" >Learn more</a>
+</div>
+
+</div>
+
+
+<div class="container" >
+    <div class="row">
+        <!-- Blog Entries Column -->
+        
+            {% for post in post_list %}
+            <div class="col-md-4 mt-3 left">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title text-white">{{ post.title }}</h2>
+                    <div class="box">
+                    <img src="{{ post.image_field.url }}" />
+                </div>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-outline-light">Read More &rarr;</a>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    </div>
+</div>
+</div>
+{%endblock%}

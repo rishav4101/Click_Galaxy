@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+  .box {
+        width: 100%;
+        height: 100%;
+
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
+  </style>
+  <div class="cont">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 card mb-4 mt-3 left top">
+      <div class="card-body">
+        <h1 class="text-sada text-center">{% block title %} {{ post.title }} {% endblock title %}</h1>
+        <div class="row justify-content-md-center">
+        <div class="box justify-content-md-center col-md-6 " >
+                    <img src="{{ post.image_field.url }}" align="middle" />
+                   
+                </div>
+              </div>
+        <p class=" text-muted text-center">{{ post.author }} | {{ post.created_on }}</p>
+        <h5 class="card-text text-center">{{ post.content | safe }}</h5>
+      </div>
+    </div>
+  </div>
+   
+<div class="row">
+    <div class="col-md-12 card mb-4 mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        <h2 class="text-sada text-center">{{ comments.count }} comments</h2>
+
+        {% for comment in comments %}
+        <div class="comments card-text text-center" style="padding: 10px;">
+          <h5>
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal text-center">
+              {{ comment.created_on }}
+            </span>
+          </h5>
+          {{ comment.body | linebreaks }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-12 card mb-4  mt-3 ">
+      
+      <div class="card-body card-text">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting check
+        </div>
+        {% else %}
+        <h3 class="text-sada text-center">Leave a comment</h3>
+        <form method="post" class="text-center" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-light">Submit</button>
+        </form>
+        {% endif %}
+      </div>
+    
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock content %}

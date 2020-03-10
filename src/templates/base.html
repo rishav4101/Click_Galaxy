@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Click_galaxy</title>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet"> 
+        <meta name="google" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous" />
+        <link href="{% static 'stars.css' %}" rel='stylesheet' type='text/css'>
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+        <div id='title'></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        
+    </head>
+
+    <body>
+        
+        
+        
+        <style>
+            body {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 14px;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            opacity: 1;
+            height: 100%;
+        }
+        .shadow {
+            box-shadow: 0 1px 0.5px -0.5px rgba(0, 0, 0, 0.1);
+        }
+        .btn-danger {
+            color: #fff;
+            background-color: #f00000;
+            border-color: #dc281e;
+        }
+        .masthead {
+            background: rgba(9,10,15,0.5);
+            font-style: #FFFFFF;
+            height: auto;
+            padding-bottom: 15px;
+            box-shadow: 0 0px 0px #E3E7EB;
+            padding-top: 15px;
+        }
+        .jumbotron {
+            background: rgba(9,10,15,0.2);
+            color: #d9d9d9;
+            height: auto;
+            padding-bottom: 15px;
+            box-shadow: 0 0px 0px #E3E7EB;
+            padding-top: 15px;
+        }
+        .masttail {
+            
+            height: 50px;
+            width: 100%;
+            padding-bottom: 6px;
+            box-shadow: 0 0px 0px #E3E7EB;
+            padding-top: 16px;
+            position: fixed;
+            bottom: 0;
+        
+            
+
+        }
+        .btn {
+            text-align: center;
+        }
+        .card{
+            background: rgba(200,200,200,0.1);
+            border: 1px solid white;
+
+        }
+        .card-text{
+            color: #d9d9d9;
+        }
+     
+        
+        .containers {
+            overflow: scroll;
+            position: relative;
+            height: 400px;
+            
+        }
+        .text-sada{
+            color:white;
+        }
+        .cont {
+            overflow: scroll;
+            position: relative;
+            height: 89.3%;
+            padding-bottom: 50px;
+            
+
+            
+        }
+    </style>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #090a0f; opacity: 1;">
+            <!-- div class="container-fluid" style="padding-top: 0" -->
+  <a class="navbar-brand" href="{% url 'home' %}">Click_galaxy</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'privacy' %}">Policy</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'contact_us' %}">Contact</a>
+                        </li>
+
+                    </ul>
+    
+  </div>
+<!-- /div -->
+</nav>
+
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+        <!-- Footer -->
+        <nav class="masttail navbar-expand-lg navbar-light " style="background-color: #090a0f; " id="Nav">
+            <div class="overlay"></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm mx-auto">
+                            <div class="site-footer">
+                    
+                            <p class="text-center text-white mx-auto">Copyright 2020&copy; rajkumar_rishav
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </body>
+</html>
